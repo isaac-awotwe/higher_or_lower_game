@@ -8,6 +8,8 @@ game_on = True
 
 choice_a = random.choice(data)
 choice_b = random.choice(data)
+if choice_a == choice_b:
+    choice_b = random.choice(data)
 data.remove(choice_a)
 data.remove(choice_b)
 choices = {'A':choice_a, 'B':choice_b}
@@ -24,10 +26,12 @@ other_count = choices[not_chosen]['follower_count']
 while game_on:
     if choice_count > other_count:
         score+=1
-        print("\n" * 5)
+        print("\n" * 15)
         print(f"You're right! Current score: {score}")
         choice_a = choice_b
         choice_b = random.choice(data)
+        if choice_a == choice_b:
+            choice_b = random.choice(data)
         if choice_a in data:
             data.remove(choice_a)
         if choice_b in data:
@@ -43,7 +47,7 @@ while game_on:
         not_chosen = [key for key in choices.keys()][0]
         other_count = choices[not_chosen]['follower_count']
     else:
-        print("\n" * 10)
+        print("\n" * 15)
         print(logo)
         print(f"Sorry, that's wrong. Final score: {score}")
         game_on = False
