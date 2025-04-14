@@ -11,7 +11,6 @@ choice_b = random.choice(data)
 data.remove(choice_a)
 data.remove(choice_b)
 choices = {'A':choice_a, 'B':choice_b}
-selected_items = [choice_a, choice_b]
 print(logo)
 print(f"Compare A: {choice_a['name']}, a {choice_a['description']}, from {choice_a['country']}")
 print(vs)
@@ -27,14 +26,13 @@ while game_on:
         score+=1
         print("\n" * 5)
         print(f"You're right! Current score: {score}")
-        choice_a = random.choice(selected_items)
+        choice_a = choice_b
         choice_b = random.choice(data)
         if choice_a in data:
             data.remove(choice_a)
         if choice_b in data:
             data.remove(choice_b)
         choices = {'A':choice_a, 'B':choice_b}
-        selected_items = [choice_a, choice_b]
         print(logo)
         print(f"Compare A: {choice_a['name']}, a {choice_a['description']}, from {choice_a['country']}")
         print(vs)
